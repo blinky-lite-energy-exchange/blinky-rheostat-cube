@@ -1,47 +1,75 @@
-#define BAUD_RATE 115200
+#define BAUD_RATE 9600
 
 struct TransmitData
 {
-  int ledState = 0;
+  int stepLocation = 0;
 };
 struct ReceiveData
 {
-  int ledOn = 1;
-  int ledToggle = 1;
-  int loopDelay = 2000;
+  int noStepsToTurn = 0;
+  int motorRirection = 0;
+  int stepDelayuS = 4000;
+  int stayAwakeAfterRotation = 0;
+  int loopDelay = 1000;
 };
 
+const int notReset = 9;
+const int notSleep = 10;
+const int stepPin = 11;
+const int dirPin = 12;
 const int ledPin = 13;
+const int stepsPerRevolution = 200;
 
 void setupPins()
 {
   pinMode(ledPin, OUTPUT);    
-  digitalWrite(ledPin, LOW);
+  pinMode(notReset, OUTPUT);
+  pinMode(notSleep, OUTPUT);
+  pinMode(stepPin, OUTPUT);
+  pinMode(dirPin, OUTPUT);
+  pinMode(ledPin, OUTPUT); 
+  digitalWrite(notReset, HIGH); 
+  wakeup(0);   
+}
+void wakeup(int wake)
+{
+  digitalWrite(notSleep, wake);  
+  delay(10);  
+}
+void rotate(int steps, int stepDelayuS, int direction)
+{
+  digitalWrite(dirPin, direction);
+  for (int i = 0; i < steps; i++) 
+  {
+    // These four lines result in 1 step:
+    digitalWrite(stepPin, HIGH);
+    delayMicroseconds(stepDelayuS);
+    digitalWrite(stepPin, LOW);
+    delayMicroseconds(stepDelayuS);
+  }
 }
 void processNewSetting(TransmitData* tData, ReceiveData* rData, ReceiveData* newData)
 {
-  rData->ledOn = newData->ledOn;
-  rData->ledToggle = newData->ledToggle;
+  rData->noStepsToTurn = newData->noStepsToTurn;
+  rData->motorRirection = newData->motorRirection;
+  rData->stepDelayuS = newData->stepDelayuS;
+  rData->stayAwakeAfterRotation = newData->stayAwakeAfterRotation;
   rData->loopDelay = newData->loopDelay;
- }
+
+  wakeup(1);
+  rotate(rData->noStepsToTurn, rData->stepDelayuS,rData->motorRirection);
+  wakeup(rData->stayAwakeAfterRotation);
+  if (rData->motorRirection == 1) tData->stepLocation = tData->stepLocation + rData->noStepsToTurn;
+  if (rData->motorRirection == 0) tData->stepLocation = tData->stepLocation - rData->noStepsToTurn;
+}
 boolean processData(TransmitData* tData, ReceiveData* rData)
 {
-  if(rData->ledToggle == 1)
-  {
-    tData->ledState = tData->ledState + 1; 
-    if (tData->ledState > 1) tData->ledState = 0;
-  }
-  else
-  {
-    tData->ledState = rData->ledOn;
-  }
-  digitalWrite(ledPin,  tData->ledState);
   delay(rData->loopDelay);
   return true;
 }
 
 const int microLEDPin = 13;
-const int commLEDPin = 2;
+const int commLEDPin = 13;
 boolean commLED = true;
 
 struct TXinfo
