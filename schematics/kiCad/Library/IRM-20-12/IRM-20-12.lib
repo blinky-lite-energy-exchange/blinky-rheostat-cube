@@ -1,0 +1,24 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#(c) SnapEDA 2016 (snapeda.com)
+#This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) with Design Exception 1.0
+#
+# IRM-20-12
+#
+DEF IRM-20-12 PS 0 40 Y Y 1 L N
+F0 "PS" -200 400 50 H V L BNN
+F1 "IRM-20-12" -200 300 50 H V L BNN
+F2 "IRM-20-12" 0 0 50 H I L BNN
+DRAW
+P 2 0 0 10 -200 200 300 200 N
+P 2 0 0 10 300 200 300 -200 N
+P 2 0 0 10 300 -200 -200 -200 N
+P 2 0 0 10 -200 -200 -200 200 N
+X L AC/L -300 100 100 R 40 40 0 0 P 
+X N AC/N -300 -100 100 R 40 40 0 0 P 
+X V+ V+ 400 100 100 L 40 40 0 0 P 
+X V- V 400 -100 100 L 40 40 0 0 P 
+ENDDRAW
+ENDDEF
+#
+# End Library

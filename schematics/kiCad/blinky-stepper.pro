@@ -1,4 +1,4 @@
-update=Tue 25 Feb 2020 10:50:12 AM CET
+update=Tue 27 Oct 2020 07:34:01 AM CET
 version=1
 last_client=kicad
 [general]
@@ -25,7 +25,7 @@ ERC_TestSimilarLabels=1
 [pcbnew]
 version=1
 PageLayoutDescrFile=
-LastNetListRead=blinky-lite-basic.net
+LastNetListRead=blinky-stepper.net
 CopperLayerCount=2
 BoardThickness=1.6
 AllowMicroVias=0

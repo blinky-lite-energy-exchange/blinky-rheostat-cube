@@ -1,5 +1,7 @@
 (sym_lib_table
-  (lib (name dmcginnis427)(type Legacy)(uri ${KIPRJMOD}/Library/dmcginnis427Symbols/dmcginnis427.lib)(options "")(descr ""))
   (lib (name teensy)(type Legacy)(uri ${KIPRJMOD}/Library/Teensy/symbols/teensy.lib)(options "")(descr ""))
-  (lib (name blinky-lite-basic-rescue)(type Legacy)(uri ${KIPRJMOD}/blinky-lite-basic-rescue.lib)(options "")(descr ""))
+  (lib (name IRM-20-12)(type Legacy)(uri ${KIPRJMOD}/Library/IRM-20-12/IRM-20-12.lib)(options "")(descr ""))
+  (lib (name L7805ABV)(type Legacy)(uri ${KIPRJMOD}/Library/L7805ABV/L7805ABV.lib)(options "")(descr ""))
+  (lib (name DRV8825)(type Legacy)(uri ${KIPRJMOD}/Library/DRV8825_STEPPER_MOTOR_DRIVER_CARRIER/DRV8825_STEPPER_MOTOR_DRIVER_CARRIER.lib)(options "")(descr ""))
+  (lib (name dmcginnis427)(type Legacy)(uri ${KIPRJMOD}/Library/dmcginnis427Symbols/dmcginnis427.lib)(options "")(descr ""))
 )

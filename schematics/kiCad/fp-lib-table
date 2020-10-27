@@ -1,4 +1,7 @@
 (fp_lib_table
   (lib (name TeensyFootprints)(type KiCad)(uri ${KIPRJMOD}/Library/Teensy/TeensyFootprints)(options "")(descr ""))
   (lib (name dmcginnis427Footprints)(type KiCad)(uri ${KIPRJMOD}/Library/dmcginnis427Footprints)(options "")(descr ""))
+  (lib (name IRM-20-12)(type KiCad)(uri ${KIPRJMOD}/Library/IRM-20-12)(options "")(descr ""))
+  (lib (name L7805ABV)(type KiCad)(uri ${KIPRJMOD}/Library/L7805ABV)(options "")(descr ""))
+  (lib (name DRV8825)(type KiCad)(uri ${KIPRJMOD}/Library/DRV8825_STEPPER_MOTOR_DRIVER_CARRIER)(options "")(descr ""))
 )
