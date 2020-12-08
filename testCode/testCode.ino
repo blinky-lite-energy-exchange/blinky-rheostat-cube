@@ -51,10 +51,10 @@ void setup()
 void loop() 
 {
   wakeup(true);
-  rotate(200, 1000, true);
+  rotate(200, 1000);
   blink();
   delay(1000);
-  rotate(200, 1000, false);
+  rotate(-200, 1000);
   blink();
   wakeup(false);
   
@@ -67,8 +67,14 @@ void wakeup(boolean wake)
   digitalWrite(notSleepPin, wake);  
   delay(10);  
 }
-void rotate(int steps, int stepDelayuS, boolean direction)
+void rotate(int steps, int stepDelayuS)
 {
+  boolean direction = true;
+  if (steps < 0)
+  {
+    direction = false;
+    steps = -steps;
+  }
   digitalWrite(greenLEDPin,   HIGH);    
   digitalWrite(yellowLEDPin,   direction);    
   digitalWrite(dirPin, direction);
