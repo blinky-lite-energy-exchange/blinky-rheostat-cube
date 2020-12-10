@@ -86,7 +86,7 @@ void rotate(int steps, int stepDelayuS)
     delayMicroseconds(stepDelayuS);
   }
   digitalWrite(greenLEDPin,   LOW);    
-  digitalWrite(greenLEDPin,   LOW);    
+  digitalWrite(yellowLEDPin,   LOW);    
 }
 void blink()
 {
