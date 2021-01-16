@@ -1,4 +1,4 @@
-#define BAUD_RATE 9600
+#define BAUD_RATE 115200
 #define notEnabledPin 12
 #define m0Pin         11
 #define m1Pin         10
