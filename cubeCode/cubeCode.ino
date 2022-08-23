@@ -17,7 +17,6 @@
 #define greenLEDPin   22
 #define yellowLEDPin  23
 
-
 union BlinkyBusUnion
 {
   struct
@@ -87,7 +86,13 @@ void setup()
 
 void loop()
 {
-  blinkyBus.poll();
+  if (blinkyBus.poll() == 2)
+  {
+    if (blinkyBus.getLastWriteAddress() == 9)
+    {
+      stepLocation = (int) blinkyBus.getLastWriteValue();
+    }
+  }
 
   setResolution(bb.resolution);
   if (bb.resetStepReading > 0)
